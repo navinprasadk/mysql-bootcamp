@@ -1,0 +1,10 @@
+NPM FAKER
+
+function generateAddress(){
+  console.log(faker.address.streetAddress());
+  console.log(faker.address.city());
+  console.log(faker.address.state());
+}
+
+
+

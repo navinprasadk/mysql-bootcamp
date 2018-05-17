@@ -1,0 +1,13 @@
+MySQL is a DataBase Management System(DBMS), 
+which uses Structured Query Language (SQL) for querying
+
+List of SQL DBMS: MySQL, PostgreSQL, SQLlite, Oracle, etc.,
+
+Cloud9 Site: https://c9.io/login
+On Cloud9: mysql-ctl start, mysql-ctl cli, mysql-ctl stop
+
+List Of Commands:
+SHOW databases;
+USE DATABASE sampledb;
+SELECT database();
+SHOW TABLES;

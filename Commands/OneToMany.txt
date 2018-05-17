@@ -1,0 +1,104 @@
+
+
+CROSS JOINS
+
+
+-- Finding Orders Placed By George: 2 Step Process
+SELECT id FROM customers WHERE last_name='George';
+SELECT * FROM orders WHERE customer_id = 1;
+
+
+-- Finding Orders Placed By George: Using a subquery
+SELECT * FROM orders WHERE customer_id =
+    (
+        SELECT id FROM customers
+        WHERE last_name='George'
+    );
+
+
+
+
+INNER JOINS
+
+
+-- IMPLICIT INNER JOIN
+SELECT first_name, last_name, order_date, amount
+FROM customers, orders 
+    WHERE customers.id = orders.customer_id;
+    
+
+-- EXPLICIT INNER JOINS    
+SELECT first_name, last_name, order_date, amount 
+FROM customers
+JOIN orders
+    ON customers.id = orders.customer_id;
+    
+SELECT *
+FROM orders
+JOIN customers
+    ON customers.id = orders.customer_id;
+
+
+-- ARBITRARY JOIN - meaningless, but still possible 
+SELECT * FROM customers
+JOIN orders ON customers.id = orders.id
+
+
+
+
+
+Left Join
+
+
+SELECT first_name, last_name, order_date, amount
+FROM customers
+LEFT JOIN orders
+    ON customers.id = orders.customer_id; 
+
+
+SELECT 
+    first_name, 
+    last_name,
+    IFNULL(SUM(amount), 0) AS total_spent
+FROM customers
+LEFT JOIN orders
+    ON customers.id = orders.customer_id
+GROUP BY customers.id
+ORDER BY total_spent;
+
+
+
+Right Join
+
+SELECT 
+    IFNULL(first_name,'MISSING') AS first, 
+    IFNULL(last_name,'USER') as last, 
+    order_date, 
+    amount, 
+    SUM(amount)
+FROM customers
+RIGHT JOIN orders
+    ON customers.id = orders.customer_id
+GROUP BY first_name, last_name;
+
+
+
+
+
+Right and Left Join FAQ
+
+SELECT * FROM customers
+LEFT JOIN orders
+    ON customers.id = orders.customer_id;
+
+SELECT * FROM orders
+RIGHT JOIN customers
+    ON customers.id = orders.customer_id;    
+
+SELECT * FROM orders
+LEFT JOIN customers
+    ON customers.id = orders.customer_id;    
+
+SELECT * FROM customers
+RIGHT JOIN orders
+    ON customers.id = orders.customer_id;

@@ -1,0 +1,118 @@
+
+View data:
+SELECT COLUMNS FROM <tablename>; (or) DESC <tablename>
+
+SELECT * FROM <tablename>; //selects all column 
+DROP TABLE <tablename>;
+
+
+Create a Table
+Syntax:
+CREATE TABLE TABLE_NAME
+(
+COLUMN_NAME DATATYPE,
+COLUMN_NAME DATATYPE,
+);
+Example:
+CREATE TABLE pastries 
+(
+name VARCHAR(15),
+quantity INT
+);
+
+Drop a Table
+Syntax:
+DROP TABLE <TABLE_NAME>
+
+Insert data in tables:
+Syntax:
+INSERT INTO TABLE_NAME (COLUMN_NAME) VALUES (DATA);
+Example:
+INSERT INTO cats(name,age)
+VALUES ("Navin", 23);
+
+Multiple Insert:
+Syntax:
+INSERT INTO TABLE_NAME (COLUMN_NAME, COLUMN_NAME) VALUES (DATA, DATA),(DATA, DATA),(DATA, DATA);
+Example:
+INSERT INTO cats(name,age)
+VALUES ("Navin", 23), ("Prasad", 12);
+
+SHOW WARNINGS;
+
+
+NULL-> The value is not known
+
+Create a table with NOT_NULL property
+Syntax:
+CREATE TABLE TABLENAME
+(
+COLUMN_NAME DATATYPE NOT NULL,
+COLUMN_NAME DATATYPE NOT NULL,
+);
+Example:
+CREATE TABLE pastries 
+(
+name VARCHAR(15) NOT NULL,
+quantity INT NOT NULL
+);
+
+Setting up DEFAULT value:
+Syntax:
+
+Example:
+CREATE TABLE pastries
+(
+name VARCHAR(20) DEFAULT 'No Name',
+age INT DEFAULT 30
+);
+
+PRIMARY KEY: A unique identifier
+Example:
+CREATE TABLE pastries (reg_no INT NOT NULL, name VARCHAR(32), age INT, PRIMARY KEY (reg_no));
+
+PRIMARY KEY WITH AUTO INCREMENT:
+CREATE TABLE pastries (reg_no INT NOT NULL AUTO_INCREMENT, name VARCHAR(32), age INT, PRIMARY KEY (reg_no));
+
+EXERCISE 1:
+Solution A:
+CREATE TABLE pastry(
+id INT NOT NULL AUTO_INCREMENT, 
+last_name VARCHAR(20) NOT NULL, 
+first_name VARCHAR(20) NOT NULL, 
+middle_name VARCHAR(20), 
+age INT NOT NULL, 
+current_status VARCHAR(30) NOT NULL DEFAULT 'employed', 
+PRIMARY KEY (id)
+);
+Solution B:
+CREATE TABLE pastry(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+last_name VARCHAR(20) NOT NULL, 
+first_name VARCHAR(20) NOT NULL, 
+middle_name VARCHAR(20), 
+age INT NOT NULL, 
+current_status VARCHAR(30) NOT NULL DEFAULT 'employed', 
+);
+
+WHERE:
+SELECT * FROM pastry WHERE age=10;
+SELECT * FROM pastry WHERE current_status='working'; 
+or
+SELECT * FROM pastry WHERE current_status='WorKiNg';
+
+	Try SELECTing before you UPDATE
+UPDATE:
+UPDATE pastry SET name='raja'
+WHERE breed='navin'
+
+DELETE:
+DELETE FROM pastry WHERE name='raja';
+DELETE FROM pastry // deletes the entire data in the table
+
+DROP & DELETE diff?
+DROP -> deletes the data an cell
+DELETE -> deletes the data 
+
+References:
+https://www.w3schools.com/sql/trysql.asp?filename=trysql_op_or

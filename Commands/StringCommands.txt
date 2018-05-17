@@ -1,0 +1,81 @@
+Concatenation: CONCAT
+Example: for static data	
+SELECT CONCAT('Navin', 'Prasad');
+
+Syntax:
+SELECT CONCAT(COLUMN_NAME, COLUMN_NAME) FROM TABLE_NAME;
+Example:
+SELECT CONCAT(first_name, last_name) FROM books;
+
+CONCAT_WS -> Concat with separator
+Syntax:
+SELECT CONCAT_WS(COLUMN_NAME, COLUMN_NAME) FROM TABLE_NAME;
+Example:
+SELECT CONCAT_WS('-', first_name, last_name) FROM books;
+
+
+
+
+
+Substring: SUBSTRING() OR SUBSTR() -> works with part of things
+Syntax:
+SELECT SUBSTRING(string, int_val1, int_val2);
+int_val1-> starting index
+int_val2-> length of the string
+
+Example: For static data
+1.SELECT SUBSTRING('Hello World', 1, 4);
+  O/P: Hell
+
+2.SELECT SUBSTRING('Hello World', 7);
+  O/P: World
+3.SELECT SUBSTRING('Hello World', -3);
+  O/P: rld
+
+Example: For dynamic data
+1.SELECT SUBSTRING(title, 1, 10) FROM books;
+2.SELECT SUBSTRING(title, 1, 10) AS 'short title' FROM books;
+3.SELECT CONCAT
+    (
+        SUBSTRING(title, 1, 10),
+        '...'
+    ) AS 'short title'
+  FROM books;
+
+
+
+
+Replace: REPLACE -> Replace parts of strings
+Example:
+SELECT REPLACE('Hello World', 'Hell', '%$#@'); -> %$#@o World
+SELECT REPLACE('Hello World', 'l', '7'); -> He77o Wor7d
+SELECT
+  REPLACE('cheese bread coffee milk', ' ', ' and '); ->cheese and bread and coffee and milk
+
+
+
+
+Reverse: REVERSE
+Example: For static data
+SELECT REVERSE ("HELLO WORLD"); -> DLROW OLLEH
+Example:
+SELECT REVERSE(author_fname) FROM books;
+
+
+
+
+Character Length: CHAR_LENGTH -> Counts the character length
+Example:
+SELECT CHAR_LENGTH('Hello World'); ->11
+
+SELECT CHAR_LENGTH(author_lname) AS 'length' FROM books;
+
+
+
+Casing: UPPER and LOWER
+Example:
+SELECT UPPER('Hello World');
+SELECT LOWER('Hello World'); 
+SELECT UPPER(title) FROM books;
+
+
